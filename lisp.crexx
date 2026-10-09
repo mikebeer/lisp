@@ -421,7 +421,10 @@ printobj: procedure = .string
   if r < 0 then return intval(r) || ''
   if r = 0 then return '#<none>'
   t = ctag[r]
-  if t = 2 then return cstr[r]
+  if t = 2 then do
+    if cspec[r] = 3 & esc = 1 then return '#:' || cstr[r]
+    return cstr[r]
+  end
   if t = 3 then return floattext(cnum[r])
   if t = 4 then do
     if esc = 1 then return printstring(cstr[r])
@@ -827,6 +830,19 @@ hasreturn: procedure = .int
     if a = sRETFROM | a = sRETURN then return 1
     if iscons(a) = 1 then do
       if hasreturn(a) = 1 then return 1
+    end
+    x = ccdr[x]
+  end
+  return 0
+
+/* does a tree mention LAMBDA or FUNCTION ? (a closure may capture a loop variable) */
+hasclosure: procedure = .int
+  arg x = .int
+  do while iscons(x) = 1
+    a = ccar[x]
+    if a = sLAMBDA | a = sFUNCTION then return 1
+    if iscons(a) = 1 then do
+      if hasclosure(a) = 1 then return 1
     end
     x = ccdr[x]
   end
@@ -1776,7 +1792,12 @@ evalspecial: procedure = .int
     b = cons(vrb, 1)
     nenv = cons(b, env)
     body = ccdr[ccdr[x]]
+    fresh = hasclosure(body)
     do while iscons(l) = 1
+      if fresh = 1 then do
+        b = cons(vrb, 1)
+        nenv = cons(b, env)
+      end
       ccdr[b] = ccar[l]
       q = body
       do while iscons(q) = 1
@@ -1788,7 +1809,7 @@ evalspecial: procedure = .int
       end
       l = ccdr[l]
     end
-    ccdr[b] = 1
+    nenv = cons(cons(vrb, 1), env)
     r = car(cdr(cdr(spec)))
     return eval(r, nenv)
   end
@@ -1803,7 +1824,12 @@ evalspecial: procedure = .int
     b = cons(vrb, 1)
     nenv = cons(b, env)
     body = ccdr[ccdr[x]]
+    fresh = hasclosure(body)
     do i = 0 to nmax - 1
+      if fresh = 1 then do
+        b = cons(vrb, 1)
+        nenv = cons(b, env)
+      end
       ccdr[b] = mkint(i)
       q = body
       do while iscons(q) = 1
@@ -1814,7 +1840,7 @@ evalspecial: procedure = .int
         q = ccdr[q]
       end
     end
-    ccdr[b] = mkint(nmax)
+    nenv = cons(cons(vrb, mkint(nmax)), env)
     r = car(cdr(cdr(spec)))
     return eval(r, nenv)
   end
@@ -4972,7 +4998,7 @@ pf116: procedure = .int
   return mkint(c)
   return 1
 
-/* FLOOR FFLOOR */
+/* FLOOR */
 pf117: procedure = .int
   arg expose av = .int[], n = .int
   a = av[1]
@@ -4996,7 +5022,7 @@ pf117: procedure = .int
   return mkint(q)
   return 1
 
-/* CEILING FCEILING */
+/* CEILING */
 pf118: procedure = .int
   arg expose av = .int[], n = .int
   a = av[1]
@@ -5020,7 +5046,7 @@ pf118: procedure = .int
   return mkint(q)
   return 1
 
-/* TRUNCATE FTRUNCATE */
+/* TRUNCATE */
 pf119: procedure = .int
   arg expose av = .int[], n = .int
   a = av[1]
@@ -5042,7 +5068,7 @@ pf119: procedure = .int
   return mkint(q)
   return 1
 
-/* ROUND FROUND */
+/* ROUND */
 pf120: procedure = .int
   arg expose av = .int[], n = .int
   a = av[1]
@@ -5615,6 +5641,7 @@ pf176: procedure = .int
   cstr[c] = cstr[av[1]]
   ccar[c] = 0
   ccdr[c] = 0
+  cspec[c] = 3
   return c
   return 1
 
@@ -5626,6 +5653,7 @@ pf177: procedure = .int
   cstr[c] = 'G' || gensymn
   ccar[c] = 0
   ccdr[c] = 0
+  cspec[c] = 3
   return c
   return 1
 
@@ -6075,13 +6103,6 @@ pf223: procedure = .int
   return 1
   return 1
 
-/* %GENSYM-RESET */
-pf224: procedure = .int
-  arg expose av = .int[], n = .int
-  gensymn = 0
-  return 1
-  return 1
-
 primg0: procedure = .int
   arg id = .int, expose av = .int[], n = .int
   if id = 1 then return pf1(av, n)
@@ -6335,7 +6356,6 @@ primg7: procedure = .int
   if id = 221 then return pf221(av, n)
   if id = 222 then return pf222(av, n)
   if id = 223 then return pf223(av, n)
-  if id = 224 then return pf224(av, n)
   return 1
 
 callprim: procedure = .int
@@ -6495,13 +6515,9 @@ initprims: procedure = .void
   call registerprim 'ABS', 115, 1, 1
   call registerprim 'SIGNUM', 116, 1, 1
   call registerprim 'FLOOR', 117, 1, 2
-  call registerprim 'FFLOOR', 117, 1, 2
   call registerprim 'CEILING', 118, 1, 2
-  call registerprim 'FCEILING', 118, 1, 2
   call registerprim 'TRUNCATE', 119, 1, 2
-  call registerprim 'FTRUNCATE', 119, 1, 2
   call registerprim 'ROUND', 120, 1, 2
-  call registerprim 'FROUND', 120, 1, 2
   call registerprim 'MOD', 121, 2, 2
   call registerprim 'REM', 122, 2, 2
   call registerprim 'SQRT', 123, 1, 1
@@ -6621,7 +6637,6 @@ initprims: procedure = .void
   call registerprim 'SYMBOL-PLIST', 222, 1, 1
   call registerprim 'PROVIDE', 223, 0, -1
   call registerprim 'REQUIRE', 223, 0, -1
-  call registerprim '%GENSYM-RESET', 224, 0, 0
   return
 
 initprelude: procedure = .void
@@ -6644,7 +6659,6 @@ initprelude: procedure = .void
   p = p || "(defun sublis (al tree)" || '0a'x
   p = p || "  (cond ((atom tree) (let ((p (assoc tree al))) (if p (cdr p) tree)))" || '0a'x
   p = p || "        (t (cons (sublis al (car tree)) (sublis al (cdr tree))))))" || '0a'x
-  p = p || "(defun string-left-pad (s n) (format nil ""~VA"" n s))" || '0a'x
   p = p || "" || '0a'x
   p = p || ";;; ---- extended LOOP ----------------------------------------------------" || '0a'x
   p = p || "(defvar *lp-bind* nil)" || '0a'x
