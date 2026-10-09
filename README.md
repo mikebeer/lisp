@@ -97,6 +97,7 @@ Hello, world!
 lisp.crexx       the interpreter
 lisp             shell wrapper that runs a program
 Makefile         build and test
+examples/        example programs (primes, account, wordcount, deriv, hello)
 tests/           test programs with expected output
 docs/            user manual
 ```
