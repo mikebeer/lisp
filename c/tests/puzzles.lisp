@@ -1,0 +1,12 @@
+(defun safe (q d qs) (or (null qs) (and (/= q (car qs)) (/= (abs (- q (car qs))) d) (safe q (1+ d) (cdr qs)))))
+(defun queens (n row qs)
+  (if (= row n) 1
+      (let ((c 0)) (dotimes (q n) (when (safe q 1 qs) (incf c (queens n (1+ row) (cons q qs))))) c)))
+(print (queens 8 0 nil))
+(defun collatz (n) (let ((c 0)) (loop while (/= n 1) do (setq n (if (evenp n) (/ n 2) (+ 1 (* 3 n)))) (incf c)) c))
+(print (loop for i from 1 to 3000 maximize (collatz i)))
+(print (length (format nil "~{~a ~}" (loop for i below 2000 collect i))))
+(defun fact (n) (if (= n 0) 1 (* n (fact (- n 1)))))
+(print (fact 20))
+(print (let ((s 0.0)) (dotimes (i 100000) (incf s (/ 1.0 (1+ i)))) s))
+(print (length (remove-duplicates (loop for i below 2000 collect (mod (* i i) 1000)))))

@@ -1,0 +1,207 @@
+* TRY
+* ERR: the value 5 is not a list
+
+ERR 
+ERR
+* ERR: arithmetic error DIVISION-BY-ZERO signalled
+
+ERR 
+ERR
+* ERR: arithmetic error DIVISION-BY-ZERO signalled
+
+ERR 
+ERR
+* ERR: undefined function UNDEFINED-FN
+
+ERR 
+ERR
+* ERR: the variable UNDEFINED-VAR is unbound
+
+ERR 
+ERR
+* ERR: the value A is not of type NUMBER
+
+ERR 
+ERR
+* ERR: boom 1 "x"
+
+ERR 
+ERR
+* ERR: index 5 is out of bounds for the vector
+
+ERR 
+ERR
+* 
+1 
+1
+* ERR: index out of bounds
+
+ERR 
+ERR
+* ERR: the value 5 is not a function
+
+ERR 
+ERR
+* 
+1 
+1
+* ERR: too few arguments to GETHASH
+
+ERR 
+ERR
+* ERR: bad subsequence bounds 2 10
+
+ERR 
+ERR
+* ERR: junk in "x"
+
+ERR 
+ERR
+* ERR: index 7 is out of bounds for the string
+
+ERR 
+ERR
+* ERR: the variable ZZZ is unbound
+
+ERR 
+ERR
+* ERR: attempt to throw to a tag that does not exist: FOO
+
+ERR 
+ERR
+* 
+42 
+42
+* 
+7 
+7
+* Error: return from unknown block NOB
+* ERR: assertion failed: (= 1 2)
+
+ERR 
+ERR
+* ERR: undefined function CHECK-TYPE
+
+ERR 
+ERR
+* ERR: the value NIL is not of type NUMBER
+
+ERR 
+ERR
+* ERR: arithmetic error DIVISION-BY-ZERO signalled
+
+ERR 
+ERR
+* ERR: SQRT of a negative number is not supported
+
+ERR 
+ERR
+* ERR: LOG of a non-positive number
+
+ERR 
+ERR
+* ERR: the value A is not a sequence
+
+ERR 
+ERR
+* ERR: the value 5 is not a sequence
+
+ERR 
+ERR
+* ERR: the value 5 is not a sequence
+
+ERR 
+ERR
+* 
+#() 
+#()
+* ERR: the value 5 is not a string designator
+
+ERR 
+ERR
+* 
+0 
+0
+* ERR: the value NIL is not of type NUMBER
+
+ERR 
+ERR
+* ERR: too few arguments to MAX
+
+ERR 
+ERR
+* ERR: the value A is not of type NUMBER
+
+ERR 
+ERR
+* 
+0 
+0
+* ERR: the value A is not of type INTEGER
+
+ERR 
+ERR
+* ERR: not a cons: 1
+
+ERR 
+ERR
+* 
+"undefined function SIGNAL" 
+"undefined function SIGNAL"
+* 
+NIL 
+NIL
+* 
+(NIL) 
+(NIL)
+* 
+BODY 
+CLEANUP 
+BODY
+* 
+CLEANUP2 ERR: x
+
+ERR 
+ERR
+* Error: undefined function HANDLER-BIND
+* ERR: undefined function CERROR
+
+ERR 
+ERR
+* WARNING: w
+
+NIL 
+NIL
+* Error: the value 5 is not a list
+* 
+AFTER 
+AFTER
+* Error: top LEVEL
+* Error: attempt to throw to a tag that does not exist: ZZ
+* Error: return from unknown block Q
+* 
+(5 2 3) 
+(5 2 3)
+* ERR: too few arguments
+
+ERR 
+ERR
+* ERR: too many arguments
+
+ERR 
+ERR
+* 
+NIL 
+NIL
+* DEEP
+* 
+1000 
+1000
+* ERR: evaluation nested too deeply (stack exhausted)
+
+ERR 
+ERR
+* 
+20000 
+20000
+* 

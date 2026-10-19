@@ -87,6 +87,34 @@ Hello, world!
   recursion signals an error. Tail calls in `if`, `cond`, `progn`, `let`,
   `when`, `unless`, `case`, `and`, `or` and function calls do not use stack.
 
+## The C89 version
+
+`c/` holds a port of the interpreter to strict, portable C89 (it builds
+with `cc -std=c89 -pedantic -Wall -Wextra` and has no dependency beyond
+the standard library, so it also builds with GCC on VM/370 CMS). It
+behaves like `lisp.crexx`: the programs in `tests/` give the same output
+byte for byte, including number formatting and error messages. It is much
+faster, because it runs natively instead of on the cREXX virtual machine.
+
+```
+make c                         # builds c/lisp-c
+make test-c                    # runs tests/ with it
+c/lisp-c program.lisp          # same command line as ./lisp
+LISP=c/lisp-c tests/run.sh     # what test-c does
+make -C c test                 # more tests, made with the cREXX version
+```
+
+The source is split by job: `core.c` (heap, symbols, errors), `read.c`,
+`print.c`, `eval.c` and `special.c`/`forms.c` (evaluator and special
+forms), `fmt.c` (FORMAT), `num.c`, the `prim_*.c` files (the built-in
+functions, numbered as in `lisp.crexx`), and `prelude.c` (the part of the
+library that is written in Lisp). Every source line is at most 71 columns;
+`make -C c lines` checks that. The float functions (`sin`, `sqrt` and so
+on) are the same series and iterations as in `lisp.crexx`, so they print
+the same digits as the cREXX version rather than those of the C library.
+Floats are written the way the cREXX runtime does it, which can differ
+from `printf("%.15g")` in the last digit.
+
 ## Documentation
 
 `docs/Lisp-User-Guide.docx` is the user manual.

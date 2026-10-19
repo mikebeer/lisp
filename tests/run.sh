@@ -4,7 +4,7 @@
 #   tests/run.sh            run all tests
 #   tests/run.sh --update   rewrite the .out files from the current output
 HERE=$(cd "$(dirname "$0")" && pwd)
-LISP="$HERE/../lisp"
+LISP=${LISP:-"$HERE/../lisp"}   # LISP=c/lisp-c tests the C version
 pass=0; fail=0
 for src in "$HERE"/*.lisp "$HERE"/*.repl; do
   case "$src" in

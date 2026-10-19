@@ -2,3 +2,5 @@ build/
 *.rxas
 *.rxbin
 *.crexx-driver.lock
+c/*.o
+c/lisp-c

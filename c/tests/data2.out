@@ -1,0 +1,156 @@
+* H
+* 5
+* 
+(1 NIL 4 NIL NIL) 
+(1 NIL 4 NIL NIL)
+* 
+(1 T) 
+(1 T)
+* 
+(NIL NIL) 
+(NIL NIL)
+* 
+5 
+5
+* 
+(A B "s" 1.5 (1 2)) 
+(A B "s" 1.5 (1 2))
+* 
+(1 2 3 4 5) 
+(1 2 3 4 5)
+* T
+* 
+4 
+4
+* B=2 "s"=3 1.5=4 (1 2)=5 
+NIL
+
+NIL
+* #<HASH-TABLE>
+* 
+0 
+0
+* H2
+* V
+* L
+* 
+(V L) 
+(V L)
+* H3
+* 1
+* 
+1 
+1
+* 
+#<HASH-TABLE> 
+#<HASH-TABLE>
+* 
+T 
+T
+* 1
+* 6
+* 
+6 
+6
+* (1)
+* (2 1)
+* 
+(2 1) 
+(2 1)
+* NIL
+* 
+52 
+52
+* 
+2401 
+2401
+* Error: the value CNT is not of type NUMBER
+* POINT
+* P
+* 
+#S(POINT :X 1 :Y 2) 
+#S(POINT :X 1 :Y 2)
+* 
+(1 2 T NIL) 
+(1 2 T NIL)
+* 10
+* 
+10 
+10
+* 
+#S(POINT :X 10 :Y 2) 
+#S(POINT :X 10 :Y 2)
+* 
+POINT 
+POINT
+* SHAPE
+* Error: undefined function NEW-SHAPE
+* CIRCLE
+* 
+#S(CIRCLE :R 5) 
+#S(CIRCLE :R 5)
+* ACCT
+* 
+#S(ACCT :BAL 100 :OWNER "me") 
+#S(ACCT :BAL 100 :OWNER "me")
+* 
+5 
+5
+* 
+"HELLO" 
+"HELLO"
+* 
+("hello" "Hello World" "hi" "cab" "abc") 
+("hello" "Hello World" "hi" "cab" "abc")
+* 
+(T T NIL T T T T T) 
+(T T NIL T T T T T)
+* 
+(3 NIL 1 2 2) 
+(3 NIL 1 2 2)
+* 
+("el" "llo" (2 3) #(3 4)) 
+("el" "llo" (2 3) #(3 4))
+* 
+("abcd" (1 2 #\a) #(1 2)) 
+("abcd" (1 2 #\a) #(1 2))
+* 
+(#\b #\A #\a 97 #\B T T T T 7 #\7 NIL T NIL) 
+(#\b #\A #\a 97 #\B T T T T 7 #\7 NIL T NIL)
+* 
+("ABC" "a" "x" "FOO" "zzz" "  ") 
+("ABC" "a" "x" "FOO" "zzz" "  ")
+* Error: junk in "ff"
+* 
+((1 2 . 3) #(1 2) "str" 'A #\x) 
+((1 2 . 3) #(1 2) "str" 'A #\x)
+* 
+("1.5" "\"a\"" "(A \"b\")" "A") 
+("1.5" "\"a\"" "(A \"b\")" "A")
+* 
+(foo FOO #:x "G4" T NIL) 
+(foo FOO #:x "G4" T NIL)
+* 
+(#(1 2) (1 2) (#\a #\b) 1.0 2 "ab") 
+(#(1 2) (1 2) (#\a #\b) 1.0 2 "ab")
+* 
+(INTEGER SINGLE-FLOAT STRING SYMBOL NULL CONS VECTOR CHARACTER FUNCTION FUNCTION) 
+(INTEGER SINGLE-FLOAT STRING SYMBOL NULL CONS VECTOR CHARACTER FUNCTION FUNCTION)
+* 
+(T T T T T T T T T NIL T) 
+(T T T T T T T T T NIL T)
+* 
+NIL 
+NIL
+* 5
+* 
+(5 D ((BAR . 5))) 
+(5 D ((BAR . 5)))
+* 
+(2 9) 
+(2 9)
+* 3
+* 
+(3 T NIL T NIL) 
+(3 T NIL T NIL)
+* 

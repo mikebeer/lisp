@@ -1,0 +1,27 @@
+* 3
+* (1 2 3)
+10
+* "unterminated
+"
+* Error: the variable STRING is unbound
+" 'x
+"
+* F
+* 8
+10
+* * Error: the variable COMMENT is unbound
+Error: the variable # (f 6)
+ is unbound
+* Error: unmatched close parenthesis
+* a
+b
+NIL
+* 
+P 
+P
+* 1
+* NIL
+* "rest of line"
+* "(princ \"no newline\")"
+* #\a
+* 

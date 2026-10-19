@@ -1,0 +1,21 @@
+(+ 1
+   2)
+(list 1 2
+ 3) (+ 5 5)
+"unterminated
+string" 'x
+(defun f (x) (* x 2))
+(f 4) (f 5)   ; comment
+#| block
+comment |# (f 6)
+)
+(format t "a~%b")
+(print 'p)
+(values 1 2 3)
+(values)
+(read-line)
+rest of line
+(read-line nil nil)
+(princ "no newline")
+#\a
+(car

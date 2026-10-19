@@ -1,0 +1,128 @@
+* s "s" 42 101 100 FF 
+NIL
+*    42|00042|42|1,234,567|+5
+NIL
+* abc       |       abc|abcdef|
+NIL
+* Error: unknown FORMAT directive ~E
+* 3.14 2.50 1.00000000
+NIL
+* 1, 2, 3
+NIL
+* 1 2; 3 4
+NIL
+* ((1 2) (3 4))
+NIL
+* 2 3 
+NIL
+* one
+NIL
+* many
+NIL
+* no
+NIL
+* x=5
+NIL
+* hello world Hello World Hello world HELLO
+NIL
+* Error: unknown FORMAT directive ~R
+* a #\b  
+NIL
+* 
+x
+
+NIL
+* Error: unknown FORMAT directive ~T
+* ~ 
+
+
+
+
+ 
+
+NIL
+* 2 4
+NIL
+* SYM str
+NIL
+* SYM "str" #\c
+NIL
+* **********99
+NIL
+* Error: the value #\- is not of type INTEGER
+*  1
+NIL
+* 0.1 100.0 1.0e10
+NIL
+* Error: the variable 1D0 is unbound
+* (1 a b (C . D))
+NIL
+* (1 "a" #\b (C . D) 1.5 NIL T)
+NIL
+* 
+"1-2" 
+"1-2"
+* x
+"x"
+1.5
+1.5
+
+NIL
+* "q\"uo\\te"
+"q\"uo\\te"
+
+NIL
+* 
+(1 2.0 "s" #\a SYM :KW NIL T) 
+(1 2.0 "s" #\a SYM :KW NIL T)
+* X
+X
+wl
+"wl"
+ws
+"ws"
+z
+#\z
+
+NIL
+* NIL
+NIL
+
+NIL
+* no newline
+NIL
+* fresh
+line
+NIL
+* 
+"     3.142|3.142|" 
+"     3.142|3.142|"
+* 
+"2.68" 
+"2.68"
+* 
+"3" 
+"3"
+* 
+"12345678901234" 
+"12345678901234"
+* 
+"-FF" 
+"-FF"
+* 
+"FF" 
+"FF"
+* 
+"00100101" 
+"00100101"
+* 
+NIL
+* 1 2/3 4
+NIL
+* 1234
+NIL
+* 1
+NIL
+* Error: unknown FORMAT directive ~?
+* Error: unknown FORMAT directive ~/
+* 

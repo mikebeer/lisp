@@ -1,0 +1,11 @@
+(setq *x* 5)
+*x*
+(defmacro m (a) `(+ ,a 1))
+(m 4)
+(macroexpand '(m 1))
+(loop for i below 3 collect i)
+(error "oops")
+(dotimes (i 2) (print i))
+(let ((s (read-line))) (list s))
+line two
+(read-line)
