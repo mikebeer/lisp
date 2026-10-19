@@ -186,6 +186,21 @@ static Ref pf111(Ref *av, long n)
     Ref *a, *b, r;
     long k = 0, m, i, j, cap = 16;
     const char *ty = symtext(A(1));
+    if (!strcmp(ty, "STRING")) {
+        for (i = 2; i <= n && ISSTR(A(i)); i++) k += ccdr[A(i)];
+        if (i > n) {
+            char *buf = (char *)xmalloc(k + 1);
+            for (i = 2, m = 0; i <= n; i++) {
+                memcpy(buf + m, XS(A(i)), (size_t)ccdr[A(i)]);
+                m += ccdr[A(i)];
+            }
+            buf[k] = 0;
+            r = mkstrn(buf, k);
+            free(buf);
+            return r;
+        }
+        k = 0;
+    }
     a = (Ref *)xmalloc(cap * (long)sizeof(Ref));
     for (i = 2; i <= n; i++) {
         b = seq2arr(A(i), &m);
